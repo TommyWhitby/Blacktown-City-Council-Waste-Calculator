@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="module" src="main.js"></script> 
+<style>
+* {box-sizing: border-box}
+
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial;
+}
+
+.tablink {
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 25%;
+}
+
+.tablink:hover {
+  background-color: #777;
+}
+
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 100px 20px;
+  height: 100%;
+}
+
+#Residential {background-color: rgb(78, 126, 231);}
+#NonResidnetial {background-color: rgb(43, 139, 43);}
+
+</style>
+</head>
+<body>
+
+<button class="tablink" onclick="openPage('Residential', this, 'rgb(78, 126, 231)')" id="defaultOpen">Calculator - Residential</button>
+<button class="tablink" onclick="openPage('NonResidnetial', this, 'rgb(43, 139, 43)')">Calculator - Non Residential</button>
+
+<div id="Residential" class="tabcontent">
+  <h3>Calculator - Residential</h3>
+  
+  <bin-calculator>
+    <button slot="tab">Standard Single Unit</button>
+    <button slot="tab">Multi-dwelling (≤7 units)</button>
+    <button slot="tab">Multi-dwelling (≥8 units) with Loop</button>
+    <button slot="tab">Multi-dwelling (≥8 units) No Loop</button>
+    <button slot="tab">Residential Flat</button>
+    <button slot="tab">New Gen (≤10 rooms)</button>
+    <button slot="tab">New Gen (≥11 rooms)</button>
+    <button slot="tab">Traditional (≤10 rooms)</button>
+    <button slot="tab">Traditional (≥11 rooms)</button>
+  </bin-calculator>
+</div>
+
+<script>
+function openPage(pageName,elmnt,color) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "";
+  }
+  document.getElementById(pageName).style.display = "block";
+  elmnt.style.backgroundColor = color;
+}
+
+document.getElementById("defaultOpen").click();
+</script>
+
+</body>
+</html> 
